@@ -103,7 +103,7 @@
 
 
         <!-- ======================================================= -->
-        <!-- 💻 [본 페이지] 인증 플랫폼 메인 화면 (기본 스크롤 지원) -->
+        <!-- 💻 [본 페이지] 인증 플랫폼 메인 화면 -->
         <!-- ======================================================= -->
         
         <!-- 상단 고정 헤더 -->
@@ -160,10 +160,10 @@
                     </button>
                 </div>
 
-                <!-- 🛠️ [대표님 지시사항 완벽 반영] placeholder 멘트 완전 도려냄 -->
+                <!-- 🛠️ [수정 완료] placeholder 속성을 아예 제거하여 완벽한 빈 공간 유지 -->
                 <div class="space-y-2.5">
                     <label class="block text-xs font-extrabold text-gray-400 uppercase tracking-wider">2. 지금 기분을 한줄로 남겨주시겠어요? <span class="text-gray-300 font-semibold">(선택)</span></label>
-                    <textarea id="userText" maxlength="120" rows="3" class="w-full rounded-[24px] border border-gray-200 bg-gray-50/50 p-4 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 resize-none ios-shadow transition-all placeholder:text-gray-400" placeholder="솔직한 마음 상태를 편안하게 적어주세요."></textarea>
+                    <textarea id="userText" maxlength="120" rows="3" class="w-full rounded-[24px] border border-gray-200 bg-gray-50/50 p-4 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 resize-none ios-shadow transition-all placeholder:text-transparent"></textarea>
                     <div class="flex justify-between text-[11px] text-gray-400 px-1">
                         <span>사진만 올려도 기록이 가능합니다.</span>
                         <span id="charCount">0/120</span>
@@ -245,7 +245,7 @@
     </div>
 
 <script>
-const KEY="recova_mvp_v18_records";
+const KEY="recova_mvp_v19_records";
 const $=id=>document.getElementById(id);
 const getRecords=()=>JSON.parse(localStorage.getItem(KEY)||"[]");
 
@@ -258,7 +258,7 @@ let isNicknameChecked = false;
 
 const setRecords=r=>{localStorage.setItem(KEY,JSON.stringify(r));refreshStats();};
 
-// 🚀 [해결 완료] 이벤트 버그 청소 및 카카오 간편 로그인 정상화
+// 온보딩 플로우 정상 가동용 이벤트 핸들러
 $("step-login").onclick = function() {
     $("fullscreen-login").classList.add("hidden");
     $("fullscreen-nickname").classList.remove("hidden");
@@ -387,7 +387,7 @@ function cardMine(r){return `<article class="bg-white border border-gray-100 rou
 function cardFeed(r){return `<article class="bg-white border border-gray-100 rounded-3xl p-4 ios-shadow space-y-3 fade-in"><div class="flex justify-between items-center text-xs"><span class="font-extrabold text-gray-800">🌱 ${esc(r.nickname)}</span><span class="text-gray-400">${fmt(r.createdAt)}</span></div>${r.image?`<img src="${r.image}" class="w-full aspect-video object-cover rounded-2xl border border-gray-100">`:""}${r.text?`<p class="text-xs text-gray-600 leading-relaxed">“${esc(r.text)}”</p>`:""}<p class="text-xs text-emerald-700 bg-emerald-50 rounded-2xl px-3 py-2.5 leading-relaxed">${esc(r.comment)}</p><div class="flex gap-3 pt-1"><button onclick="alert('따뜻한 응원이 전송되었습니다.')" class="bg-gray-50 border border-gray-100 text-gray-600 rounded-xl px-3 py-1.5 text-[11px] font-bold hover:bg-emerald-50 hover:text-emerald-700 transition-all">🌱 따뜻한 응원 보내기</button></div></article>`;}
 
 function bindButtons(){document.querySelectorAll("[data-edit]").forEach(b=>b.onclick=()=>editRecord(b.dataset.edit));document.querySelectorAll("[data-delete]").forEach(b=>b.onclick=()=>deleteRecord(b.dataset.delete));}
-function editRecord(id){const r=getRecords().find(x=>x.id===id);if(!r)return;editId=id;selectedImage=r.image||"";selectedMood=r.mood||"";visibility=r.visibility||"private";$("userText").value=r.text||"";$("charCount").textContent=`${$("userText").value.length}/120`;if(selectedImage){$("imagePreview").src=selectedImage;$("imagePreview").classList.remove("hidden");$("uploadPrompt").classList.add("hidden");$("replaceHint").classList.remove("hidden")}else{$("imagePreview").classList.add("hidden");$("uploadPrompt").classList.remove("hidden");`$("replaceHint").classList.add("hidden");`}document.querySelectorAll(".mood").forEach(b=>{if(b.dataset.mood===selectedMood)b.click();});setPrivacy(visibility);$("submitBtn").textContent="기록 수정 완료하기";go("write");}
+function editRecord(id){const r=getRecords().find(x=>x.id===id);if(!r)return;editId=id;selectedImage=r.image||"";selectedMood=r.mood||"";visibility=r.visibility||"private";$("userText").value=r.text||"";$("charCount").textContent=`${$("userText").value.length}/120`;if(selectedImage){$("imagePreview").src=selectedImage;$("imagePreview").classList.remove("hidden");$("uploadPrompt").classList.add("hidden");$("replaceHint").classList.remove("hidden")}else{$("imagePreview").classList.add("hidden");$("uploadPrompt").classList.remove("hidden");$("replaceHint").classList.add("hidden");}document.querySelectorAll(".mood").forEach(b=>{if(b.dataset.mood===selectedMood)b.click();});setPrivacy(visibility);$("submitBtn").textContent="기록 수정 완료하기";go("write");}
 function deleteRecord(id){if(!confirm("이 루틴 기록을 삭제할까요?"))return;setRecords(getRecords().filter(r=>r.id!==id));renderMine();renderFeed();}
 $("clearAllBtn").onclick=()=>{if(!confirm("기기에 기록된 모든 RECOVA 히스토리를 삭제할까요?"))return;localStorage.removeItem(KEY);renderMine();renderFeed();refreshStats();};
 
