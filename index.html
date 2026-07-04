@@ -103,7 +103,7 @@
 
 
         <!-- ======================================================= -->
-        <!-- 💻 [본 페이지] 인증 플랫폼 메인 화면 -->
+        <!-- 💻 [본 페이지] 인증 플랫폼 메인 화면 (기본 스크롤 지원) -->
         <!-- ======================================================= -->
         
         <!-- 상단 고정 헤더 -->
@@ -160,10 +160,10 @@
                     </button>
                 </div>
 
-                <!-- 🛠️ [수정 완료] placeholder 속성을 아예 제거하여 완벽한 빈 공간 유지 -->
+                <!-- 🛠️ [수정 반영 완료] placeholder 속성을 완벽하게 지워 100% 순수한 빈칸으로 강제 변경 -->
                 <div class="space-y-2.5">
                     <label class="block text-xs font-extrabold text-gray-400 uppercase tracking-wider">2. 지금 기분을 한줄로 남겨주시겠어요? <span class="text-gray-300 font-semibold">(선택)</span></label>
-                    <textarea id="userText" maxlength="120" rows="3" class="w-full rounded-[24px] border border-gray-200 bg-gray-50/50 p-4 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 resize-none ios-shadow transition-all placeholder:text-transparent"></textarea>
+                    <textarea id="userText" maxlength="120" rows="3" class="w-full rounded-[24px] border border-gray-200 bg-gray-50/50 p-4 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 resize-none ios-shadow transition-all"></textarea>
                     <div class="flex justify-between text-[11px] text-gray-400 px-1">
                         <span>사진만 올려도 기록이 가능합니다.</span>
                         <span id="charCount">0/120</span>
@@ -245,7 +245,7 @@
     </div>
 
 <script>
-const KEY="recova_mvp_v19_records";
+const KEY="recova_mvp_v18_records";
 const $=id=>document.getElementById(id);
 const getRecords=()=>JSON.parse(localStorage.getItem(KEY)||"[]");
 
@@ -258,7 +258,7 @@ let isNicknameChecked = false;
 
 const setRecords=r=>{localStorage.setItem(KEY,JSON.stringify(r));refreshStats();};
 
-// 온보딩 플로우 정상 가동용 이벤트 핸들러
+// 🚀 v15 원본 구동축 기반의 안전한 인터랙션 복원 완료
 $("step-login").onclick = function() {
     $("fullscreen-login").classList.add("hidden");
     $("fullscreen-nickname").classList.remove("hidden");
