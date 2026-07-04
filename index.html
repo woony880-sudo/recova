@@ -26,11 +26,11 @@
     <div class="w-full max-w-md h-full bg-white flex flex-col relative shadow-2xl shadow-gray-200 overflow-hidden">
 
         <!-- ======================================================= -->
-        <!-- 🌟 [스크롤 100% 절대 잠금] 풀스크린 온보딩 게이트 -->
+        <!-- 🌟 풀스크린 온보딩 게이트 (스크롤 100% 잠금) -->
         <!-- ======================================================= -->
         <div id="onboarding-gate" class="absolute inset-0 recova-bg z-50 flex flex-col justify-center items-center px-6 transition-all duration-500 overflow-hidden select-none">
             
-            <!-- 🚀 [시퀀스 1] 순수 카카오 로그인 전체화면 뷰 (상하 흔들림 절대 차단) -->
+            <!-- 🚀 [시퀀스 1] 순수 카카오 로그인 전체화면 뷰 -->
             <div id="fullscreen-login" class="w-full max-w-xs flex flex-col items-center justify-center fade-in space-y-8">
                 <div class="text-center space-y-1">
                     <p class="text-[10px] font-extrabold tracking-[0.25em] text-emerald-600/80 uppercase">Daily Recovery Platform</p>
@@ -103,7 +103,7 @@
 
 
         <!-- ======================================================= -->
-        <!-- 💻 [본 페이지] 인증 플랫폼 메인 화면 (기본 스크롤 지원) -->
+        <!-- 💻 [본 페이지] 인증 플랫폼 메인 화면 -->
         <!-- ======================================================= -->
         
         <!-- 상단 고정 헤더 -->
@@ -160,10 +160,10 @@
                     </button>
                 </div>
 
-                <!-- 기분 기록 -->
+                <!-- 🛠️ [수정 완료] 대표님 지시대로 부가적인 요구 멘트 소거 조치 완료 -->
                 <div class="space-y-2.5">
                     <label class="block text-xs font-extrabold text-gray-400 uppercase tracking-wider">2. 지금 기분을 한줄로 남겨주시겠어요? <span class="text-gray-300 font-semibold">(선택)</span></label>
-                    <textarea id="userText" maxlength="120" rows="3" class="w-full rounded-[24px] border border-gray-200 bg-gray-50/50 p-4 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 resize-none ios-shadow transition-all placeholder:text-gray-400" placeholder="이번 인증은 어떤 기분인가요? 마음 상태를 편안하게 적어주세요."></textarea>
+                    <textarea id="userText" maxlength="120" rows="3" class="w-full rounded-[24px] border border-gray-200 bg-gray-50/50 p-4 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 resize-none ios-shadow transition-all placeholder:text-gray-400" placeholder="솔직한 마음 상태를 편안하게 적어주세요."></textarea>
                     <div class="flex justify-between text-[11px] text-gray-400 px-1">
                         <span>사진만 올려도 기록이 가능합니다.</span>
                         <span id="charCount">0/120</span>
@@ -238,19 +238,19 @@
         </div>
 
         <!-- 하단 바 고정 -->
-        <footer id="footerWrite" class="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur border-t border-gray-100 px-5 py-4 z-30">
+        <footer id="footerWrite" class="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur border-t border-gray-100 px-5 py-4 z-35">
             <button id="submitBtn" class="w-full rounded-2xl bg-gray-950 text-white py-4 text-sm font-extrabold shadow-md hover:bg-emerald-600 active:scale-[.98] transition-all">오늘의 루틴 완료하기</button>
             <p class="text-[10px] text-center text-gray-400 mt-2.5 font-medium">© 2026 RECOVA. All rights reserved.</p>
         </footer>
     </div>
 
 <script>
-const KEY="recova_mvp_v15_records";
+const KEY="recova_mvp_v16_records";
 const $=id=>document.getElementById(id);
 const getRecords=()=>JSON.parse(localStorage.getItem(KEY)||"[]");
 
-const funnyNicknames = ["**헬스보이**", "**프로틴인간**", "**웃음과텐션**", "**근수저꿈나무**", "**오운완요정**", "**벌크업마스터**", "**에너지폭발**"];
-const existingDatabaseNicknames = ["**헬스보이1**", "**프로틴인간1**", "**프로틴인간2**", "**웃음과텐션1**"];
+const funnyNicknames = ["헬스보이", "프로틴인간", "웃음과텐션", "근수저꿈나무", "오운완요정", "벌크업마스터", "에너지폭발"];
+const existingDatabaseNicknames = ["헬스보이1", "프로틴인간1", "프로틴인간2", "웃음과텐션1"];
 
 let selectedImage="",selectedMood="",visibility="private",editId=null;
 let globalNickname = "익명의 러너";
@@ -258,12 +258,12 @@ let isNicknameChecked = false;
 
 const setRecords=r=>{localStorage.setItem(KEY,JSON.stringify(r));refreshStats();};
 
-// 풀스크린 인터랙션 연동 제어
+// 온보딩 플로우 이벤트
 $("step-login").addEventListener('click', () => {
     $("fullscreen-login").classList.add("hidden");
     $("fullscreen-nickname").classList.remove("hidden");
     
-    const randomBase = funnyNicknames[Math.floor(Math.random() * funnyNicknames.length)].replaceAll("**", "");
+    const randomBase = funnyNicknames[Math.floor(Math.random() * funnyNicknames.length)];
     $("userNickname").value = randomBase + "1";
 });
 
@@ -275,7 +275,7 @@ $("checkDuplicateBtn").addEventListener('click', () => {
     let baseName = inputName.replace(/[0-9]/g, ""); 
     let checkName = inputName;
 
-    while(existingDatabaseNicknames.map(n => n.replaceAll("**", "")).includes(checkName) || getRecords().some(r => r.nickname === checkName)) {
+    while(existingDatabaseNicknames.includes(checkName) || getRecords().some(r => r.nickname === checkName)) {
         currentNumber++;
         checkName = baseName + currentNumber;
     }
@@ -392,7 +392,7 @@ function deleteRecord(id){if(!confirm("이 루틴 기록을 삭제할까요?"))r
 $("clearAllBtn").onclick=()=>{if(!confirm("기기에 기록된 모든 RECOVA 히스토리를 삭제할까요?"))return;localStorage.removeItem(KEY);renderMine();renderFeed();refreshStats();};
 
 function resetForm(){editId=null;selectedImage="";selectedMood="";visibility="private";$("userText").value="";$("charCount").textContent="0/120";$("imageUpload").value="";$("imagePreview").src="";$("imagePreview").classList.add("hidden");$("uploadPrompt").classList.remove("hidden");$("replaceHint").classList.add("hidden");$("resultComment").classList.add("hidden");$("submitBtn").textContent="오늘의 루틴 완료하기";document.querySelectorAll(".mood").forEach(b=>b.className="mood rounded-xl border border-gray-100 bg-white py-3 text-xs font-bold text-gray-600 ios-shadow transition-all");setPrivacy("private");}
-function refreshStats(){const uId = "demo-user-003"; const mine=getRecords().filter(r=>r.userId===uId);const total=mine.length;const week=mine.filter(r=>(new Date()-new Date(r.createdAt))<=7*24*60*60*1000).length;$("streakBadge").textContent=`✨ ${total}회차`;$("statTotal").textContent=total;$("statStreak").textContent=total;$("statWeek").textContent=week;}
+function refreshStats(){const uId = "demo-user-003"; const mine=getRecords().filter(r=>r.userId===uId);const total=mine.length;const week=mine.filter(r=>(new Date()-new Date(r.createdAt))<=7*24*60*60*1000).length;$("streakBadge").textContent=\`✨ \${total}회차\`;$("statTotal").textContent=total;$("statStreak").textContent=total;$("statWeek").textContent=week;}
 function empty(t){return `<div class="rounded-2xl bg-gray-50 border border-gray-100 p-6 text-center text-xs text-gray-400 font-bold">${t}</div>`;}
 function fmt(iso){return new Date(iso).toLocaleString("ko-KR",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"});}
 function esc(s){return String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");}
