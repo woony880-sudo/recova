@@ -7,12 +7,11 @@
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght=400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-    body { font-family: 'Pretendard', system-ui, sans-serif; background-color: #F8FAFC; }
+    html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; font-family: 'Pretendard', system-ui, sans-serif; background-color: #F8FAFC; }
     .ios-shadow { box-shadow: 0 12px 40px rgba(16, 185, 129, 0.08); }
     .fade-in { animation: fadeIn 0.35s ease-out forwards; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     
-    /* 🌱 리코바 웰니스 에메랄드 무빙 그라데이션 패턴 */
     .recova-bg {
         background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #f0fdf4 100%);
         background-size: 400% 400%;
@@ -21,12 +20,17 @@
     @keyframes gradientMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 </style>
 </head>
-<body class="flex justify-center min-h-screen text-gray-800">
+<body class="flex justify-center items-center">
 
-    <div class="w-full max-w-md min-h-screen bg-white flex flex-col relative shadow-2xl shadow-gray-200 overflow-x-hidden">
+    <!-- 📱 전체 모바일 컨테이너 -->
+    <div class="w-full max-w-md h-full bg-white flex flex-col relative shadow-2xl shadow-gray-200 overflow-hidden">
 
+        <!-- ======================================================= -->
+        <!-- 🌟 [스크롤 100% 절대 잠금] 풀스크린 온보딩 게이트 -->
+        <!-- ======================================================= -->
         <div id="onboarding-gate" class="absolute inset-0 recova-bg z-50 flex flex-col justify-center items-center px-6 transition-all duration-500 overflow-hidden select-none">
             
+            <!-- 🚀 [시퀀스 1] 순수 카카오 로그인 전체화면 뷰 (상하 흔들림 절대 차단) -->
             <div id="fullscreen-login" class="w-full max-w-xs flex flex-col items-center justify-center fade-in space-y-8">
                 <div class="text-center space-y-1">
                     <p class="text-[10px] font-extrabold tracking-[0.25em] text-emerald-600/80 uppercase">Daily Recovery Platform</p>
@@ -45,6 +49,7 @@
                 </div>
             </div>
 
+            <!-- 🚀 [시퀀스 2] 로그인 후 등장하는 닉네임 입력 및 중복검사 전체화면 뷰 -->
             <div id="fullscreen-nickname" class="hidden w-full max-w-xs flex flex-col items-center justify-center fade-in space-y-6">
                 <div class="text-center space-y-1">
                     <p class="text-[10px] font-extrabold tracking-[0.25em] text-emerald-600/80 uppercase">Daily Recovery Platform</p>
@@ -72,30 +77,37 @@
                 </div>
             </div>
 
+            <!-- 🚀 [시퀀스 3] 닉네임 저장 후 나타나는 리코바 1줄 철학 전체화면 뷰 -->
             <div id="fullscreen-philosophy" class="hidden w-full max-w-xs flex flex-col items-center justify-center fade-in space-y-6">
                 <div class="text-center space-y-1">
                     <p class="text-[10px] font-extrabold tracking-[0.25em] text-emerald-600/80 uppercase">Daily Recovery Platform</p>
                     <h1 class="text-4xl font-black text-gray-950 tracking-tight">RECOVA</h1>
                 </div>
 
-                <div class="w-full bg-white/90 backdrop-blur-md border border-white/60 rounded-3xl p-7 text-center ios-shadow space-y-3">
+                <div class="w-full max-w-xs bg-white/90 backdrop-blur-md border border-white/60 rounded-3xl p-7 text-center ios-shadow space-y-3">
                     <span class="text-[9px] font-extrabold tracking-widest text-emerald-600 uppercase border border-emerald-100 bg-emerald-50 px-2.5 py-0.5 rounded-full">RECOVA PHILOSOPHY</span>
                     <p class="text-xs font-bold text-emerald-950 leading-relaxed">
                         🌱 "완벽한 하루 대신,<br>오늘 나를 챙긴 1분의 흔적을 믿어요."
                     </p>
                 </div>
-                <button id="closePhilosophyBtn" class="w-full bg-gray-950 text-white text-xs font-black py-4 rounded-2xl hover:bg-emerald-600 transition-all active:scale-95 shadow-md">
+                <button id="closePhilosophyBtn" class="w-full max-w-xs bg-gray-950 text-white text-xs font-black py-4 rounded-2xl hover:bg-emerald-600 transition-all active:scale-95 shadow-md">
                     RECOVA 시작하기
                 </button>
             </div>
             
+            <!-- 하단 고정 카피라이트 -->
             <div class="absolute bottom-6 text-center text-[10px] text-gray-400 font-medium">
                 © 2026 RECOVA. All rights reserved.
             </div>
         </div>
 
 
-        <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-100 px-5 pt-5 pb-3">
+        <!-- ======================================================= -->
+        <!-- 💻 [본 페이지] 인증 플랫폼 메인 화면 (기본 스크롤 지원) -->
+        <!-- ======================================================= -->
+        
+        <!-- 상단 고정 헤더 -->
+        <header class="bg-white border-b border-gray-100 px-5 pt-5 pb-3 shrink-0">
             <div class="flex justify-between items-center">
                 <div>
                     <p class="text-[11px] font-extrabold tracking-[0.18em] text-emerald-600 uppercase">Daily Recovery Check-in</p>
@@ -110,8 +122,10 @@
             </div>
         </header>
 
-        <main class="flex-1 px-5 py-5 pb-32 space-y-6">
+        <!-- 메인 스크롤 콘텐츠 영역 -->
+        <div class="flex-1 overflow-y-auto px-5 py-5 pb-36 space-y-6">
 
+            <!-- 웰컴 비주얼 카드 -->
             <div class="rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-600 p-6 text-white ios-shadow space-y-2 relative overflow-hidden">
                 <div class="absolute -right-6 -bottom-6 opacity-10 text-white text-7xl font-black">RE</div>
                 <h2 class="text-lg font-black tracking-tight leading-snug">
@@ -122,14 +136,17 @@
                 </p>
             </div>
 
+            <!-- 네비게이션 탭 -->
             <nav class="grid grid-cols-3 gap-1 bg-gray-100 rounded-2xl p-1 shadow-inner">
                 <button id="navWrite" class="nav bg-white text-gray-950 shadow-sm rounded-xl py-2.5 text-xs font-extrabold transition-all">루틴 기록</button>
                 <button id="navMine" class="nav text-gray-500 rounded-xl py-2.5 text-xs font-extrabold transition-all">내 기록실</button>
                 <button id="navFeed" class="nav text-gray-500 rounded-xl py-2.5 text-xs font-extrabold transition-all">공유 피드</button>
             </nav>
 
-            <section id="viewWrite" class="space-y-6 function-view fade-in">
+            <!-- [TAB 1] 루틴 기록 화면 콘텐츠 -->
+            <section id="viewWrite" class="space-y-6 function-view">
                 
+                <!-- 사진 업로드 -->
                 <div class="space-y-2.5">
                     <label class="block text-xs font-extrabold text-gray-400 uppercase tracking-wider">1. 사진 인증</label>
                     <input type="file" id="imageUpload" accept="image/*" class="hidden">
@@ -143,6 +160,7 @@
                     </button>
                 </div>
 
+                <!-- 기분 기록 -->
                 <div class="space-y-2.5">
                     <label class="block text-xs font-extrabold text-gray-400 uppercase tracking-wider">2. 지금 기분을 한줄로 남겨주시겠어요? <span class="text-gray-300 font-semibold">(선택)</span></label>
                     <textarea id="userText" maxlength="120" rows="3" class="w-full rounded-[24px] border border-gray-200 bg-gray-50/50 p-4 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 resize-none ios-shadow transition-all placeholder:text-gray-400" placeholder="이번 인증은 어떤 기분인가요? 마음 상태를 편안하게 적어주세요."></textarea>
@@ -152,6 +170,7 @@
                     </div>
                 </div>
 
+                <!-- 마음 상태 선택 -->
                 <div class="space-y-2.5">
                     <label class="block text-xs font-extrabold text-gray-400 uppercase tracking-wider">3. 나의 마음 상태 <span class="text-gray-300 font-semibold">(선택)</span></label>
                     <div id="moodGroup" class="grid grid-cols-2 gap-2">
@@ -162,6 +181,7 @@
                     </div>
                 </div>
 
+                <!-- 공개 범위 설정 -->
                 <div class="space-y-2.5">
                     <label class="block text-xs font-extrabold text-gray-400 uppercase tracking-wider">4. 공개 범위 설정</label>
                     <div class="grid grid-cols-2 gap-2">
@@ -176,7 +196,8 @@
                     </div>
                 </div>
 
-                <div id="resultComment" class="hidden bg-gradient-to-br from-emerald-500 to-teal-600 rounded-[24px] p-5 text-white ios-shadow fade-in">
+                <!-- AI 코멘트 창 -->
+                <div id="resultComment" class="hidden bg-gradient-to-br from-emerald-500 to-teal-600 rounded-[24px] p-5 text-white ios-shadow">
                     <div class="flex items-center justify-between">
                         <span class="bg-white/20 text-[9px] font-extrabold tracking-wider uppercase px-2 py-0.5 rounded-full">RECOVA AI 코멘트</span>
                     </div>
@@ -184,7 +205,8 @@
                 </div>
             </section>
 
-            <section id="viewMine" class="hidden space-y-5 function-view fade-in">
+            <!-- [TAB 2] 내 기록실 화면 -->
+            <section id="viewMine" class="hidden space-y-5 function-view">
                 <div class="grid grid-cols-3 gap-2">
                     <div class="rounded-2xl bg-gray-50 border border-gray-100/70 p-3.5 text-center">
                         <p id="statTotal" class="text-lg font-extrabold text-gray-950">0</p>
@@ -206,27 +228,29 @@
                 <div id="myRecords" class="space-y-3.5"></div>
             </section>
 
-            <section id="viewFeed" class="hidden space-y-4 function-view fade-in">
+            <!-- [TAB 3] 공유 피드 화면 -->
+            <section id="viewFeed" class="hidden space-y-4 function-view">
                 <div class="rounded-2xl bg-gray-50 border border-gray-100 p-4">
                     <p class="text-xs leading-relaxed text-gray-500">🌱 다른 러너들과 익명으로 함께 나누는 공간입니다. 서로를 향한 따뜻한 응원을 전해 보세요.</p>
                 </div>
                 <div id="publicFeed" class="space-y-3.5"></div>
             </section>
-        </main>
+        </div>
 
-        <footer id="footerWrite" class="fixed bottom-0 max-w-md w-full bg-white/95 backdrop-blur border-t border-gray-100 px-5 py-4 z-35">
+        <!-- 하단 바 고정 -->
+        <footer id="footerWrite" class="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur border-t border-gray-100 px-5 py-4 z-30">
             <button id="submitBtn" class="w-full rounded-2xl bg-gray-950 text-white py-4 text-sm font-extrabold shadow-md hover:bg-emerald-600 active:scale-[.98] transition-all">오늘의 루틴 완료하기</button>
             <p class="text-[10px] text-center text-gray-400 mt-2.5 font-medium">© 2026 RECOVA. All rights reserved.</p>
         </footer>
     </div>
 
 <script>
-const KEY="recova_mvp_v14_records";
+const KEY="recova_mvp_v15_records";
 const $=id=>document.getElementById(id);
 const getRecords=()=>JSON.parse(localStorage.getItem(KEY)||"[]");
 
-const funnyNicknames = ["헬스보이", "프로틴인간", "웃음과텐션", "근수저꿈나무", "오운완요정", "벌크업마스터", "에너지폭발"];
-const existingDatabaseNicknames = ["헬스보이1", "프로틴인간1", "프로틴인간2", "웃음과텐션1"];
+const funnyNicknames = ["**헬스보이**", "**프로틴인간**", "**웃음과텐션**", "**근수저꿈나무**", "**오운완요정**", "**벌크업마스터**", "**에너지폭발**"];
+const existingDatabaseNicknames = ["**헬스보이1**", "**프로틴인간1**", "**프로틴인간2**", "**웃음과텐션1**"];
 
 let selectedImage="",selectedMood="",visibility="private",editId=null;
 let globalNickname = "익명의 러너";
@@ -234,12 +258,12 @@ let isNicknameChecked = false;
 
 const setRecords=r=>{localStorage.setItem(KEY,JSON.stringify(r));refreshStats();};
 
-// 풀스크린 유기적 게이트 인터랙션
+// 풀스크린 인터랙션 연동 제어
 $("step-login").addEventListener('click', () => {
     $("fullscreen-login").classList.add("hidden");
     $("fullscreen-nickname").classList.remove("hidden");
     
-    const randomBase = funnyNicknames[Math.floor(Math.random() * funnyNicknames.length)];
+    const randomBase = funnyNicknames[Math.floor(Math.random() * funnyNicknames.length)].replaceAll("**", "");
     $("userNickname").value = randomBase + "1";
 });
 
@@ -251,14 +275,14 @@ $("checkDuplicateBtn").addEventListener('click', () => {
     let baseName = inputName.replace(/[0-9]/g, ""); 
     let checkName = inputName;
 
-    while(existingDatabaseNicknames.includes(checkName) || getRecords().some(r => r.nickname === checkName)) {
+    while(existingDatabaseNicknames.map(n => n.replaceAll("**", "")).includes(checkName) || getRecords().some(r => r.nickname === checkName)) {
         currentNumber++;
         checkName = baseName + currentNumber;
     }
 
     if (checkName !== inputName) {
         $("userNickname").value = checkName;
-        $("duplicateStatus").innerText = `⚠️ 중복된 이름이 있어 [${checkName}]번으로 자동 조정되었습니다!`;
+        $("duplicateStatus").innerText = `⚠️ 중복이 있어 [${checkName}]번으로 자동 조정되었습니다!`;
         $("duplicateStatus").className = "text-[10px] font-bold px-1 text-amber-600";
     } else {
         $("duplicateStatus").innerText = `✅ 사용 가능한 고유 닉네임입니다.`;
