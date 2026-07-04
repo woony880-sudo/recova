@@ -22,11 +22,16 @@
 </head>
 <body class="flex justify-center items-center">
 
+    <!-- 📱 전체 모바일 컨테이너 -->
     <div class="w-full max-w-md h-full bg-white flex flex-col relative shadow-2xl shadow-gray-200 overflow-hidden">
 
+        <!-- ======================================================= -->
+        <!-- 🌟 [스크롤 100% 절대 잠금] 풀스크린 온보딩 게이트 -->
+        <!-- ======================================================= -->
         <div id="onboarding-gate" class="absolute inset-0 recova-bg z-50 flex flex-col justify-center items-center px-6 transition-all duration-500 overflow-hidden select-none">
             
-            <div id="fullscreen-login" class="w-full max-w-xs flex flex-col items-center justify-center fade-in space-y-8 relative z-50">
+            <!-- 🚀 [시퀀스 1] 순수 카카오 로그인 전체화면 뷰 (상하 흔들림 절대 차단) -->
+            <div id="fullscreen-login" class="w-full max-w-xs flex flex-col items-center justify-center fade-in space-y-8">
                 <div class="text-center space-y-1">
                     <p class="text-[10px] font-extrabold tracking-[0.25em] text-emerald-600/80 uppercase">Daily Recovery Platform</p>
                     <h1 class="text-4xl font-black text-gray-950 tracking-tight">RECOVA</h1>
@@ -35,17 +40,17 @@
                 <p class="text-xs font-bold text-gray-600 text-center leading-relaxed">
                     반가워요!<br>나를 챙기는 루틴을 시작하기 전<br>간편 로그인을 진행해 주세요.
                 </p>
-                
-                <div id="step-login" class="w-full bg-[#FEE500] text-[#191919] text-sm font-black py-4 px-5 rounded-2xl flex justify-between items-center cursor-pointer hover:opacity-90 active:scale-[0.98] transition shadow-md relative z-[99] pointer-events-auto">
-                    <div class="flex items-center gap-2 pointer-events-none">
+                <div id="step-login" class="w-full bg-[#FEE500] text-[#191919] text-sm font-black py-4 px-5 rounded-2xl flex justify-between items-center cursor-pointer hover:opacity-90 transition shadow-md">
+                    <div class="flex items-center gap-2">
                         <span>💛</span>
                         <span>카카오 1초 간편 로그인</span>
                     </div>
-                    <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </div>
             </div>
 
-            <div id="fullscreen-nickname" class="hidden w-full max-w-xs flex flex-col items-center justify-center fade-in space-y-6 relative z-50">
+            <!-- 🚀 [시퀀스 2] 로그인 후 등장하는 닉네임 입력 및 중복검사 전체화면 뷰 -->
+            <div id="fullscreen-nickname" class="hidden w-full max-w-xs flex flex-col items-center justify-center fade-in space-y-6">
                 <div class="text-center space-y-1">
                     <p class="text-[10px] font-extrabold tracking-[0.25em] text-emerald-600/80 uppercase">Daily Recovery Platform</p>
                     <h1 class="text-4xl font-black text-gray-950 tracking-tight">RECOVA</h1>
@@ -63,16 +68,17 @@
                                 <span class="text-[10px] font-extrabold text-gray-400 shrink-0">닉네임</span>
                                 <input type="text" id="userNickname" class="w-full bg-transparent py-2 text-xs font-bold text-gray-800 outline-none" value="">
                             </div>
-                            <button id="checkDuplicateBtn" class="bg-gray-900 text-white text-[11px] font-bold px-3 rounded-xl hover:bg-gray-800 active:scale-95 transition-all relative z-[99] pointer-events-auto">중복 확인</button>
+                            <button id="checkDuplicateBtn" class="bg-gray-900 text-white text-[11px] font-bold px-3 rounded-xl hover:bg-gray-800 active:scale-95 transition-all">중복 확인</button>
                         </div>
                         <p id="duplicateStatus" class="text-[10px] font-bold px-1 text-gray-400">⚠️ 입력 후 중복 확인을 눌러주세요.</p>
                     </div>
 
-                    <button id="saveNicknameBtn" disabled class="w-full bg-gray-300 text-gray-500 text-xs font-extrabold py-3.5 rounded-xl transition-all shadow-sm cursor-not-allowed relative z-[99] pointer-events-auto">닉네임 저장하기</button>
+                    <button id="saveNicknameBtn" disabled class="w-full bg-gray-300 text-gray-500 text-xs font-extrabold py-3.5 rounded-xl transition-all shadow-sm cursor-not-allowed">닉네임 저장하기</button>
                 </div>
             </div>
 
-            <div id="fullscreen-philosophy" class="hidden w-full max-w-xs flex flex-col items-center justify-center fade-in space-y-6 relative z-50">
+            <!-- 🚀 [시퀀스 3] 닉네임 저장 후 나타나는 리코바 1줄 철학 전체화면 뷰 -->
+            <div id="fullscreen-philosophy" class="hidden w-full max-w-xs flex flex-col items-center justify-center fade-in space-y-6">
                 <div class="text-center space-y-1">
                     <p class="text-[10px] font-extrabold tracking-[0.25em] text-emerald-600/80 uppercase">Daily Recovery Platform</p>
                     <h1 class="text-4xl font-black text-gray-950 tracking-tight">RECOVA</h1>
@@ -84,17 +90,23 @@
                         🌱 "완벽한 하루 대신,<br>오늘 나를 챙긴 1분의 흔적을 믿어요."
                     </p>
                 </div>
-                <button id="closePhilosophyBtn" class="w-full max-w-xs bg-gray-950 text-white text-xs font-black py-4 rounded-2xl hover:bg-emerald-600 transition-all active:scale-95 shadow-md relative z-[99] pointer-events-auto">
+                <button id="closePhilosophyBtn" class="w-full max-w-xs bg-gray-950 text-white text-xs font-black py-4 rounded-2xl hover:bg-emerald-600 transition-all active:scale-95 shadow-md">
                     RECOVA 시작하기
                 </button>
             </div>
             
+            <!-- 하단 고정 카피라이트 -->
             <div class="absolute bottom-6 text-center text-[10px] text-gray-400 font-medium">
                 © 2026 RECOVA. All rights reserved.
             </div>
         </div>
 
 
+        <!-- ======================================================= -->
+        <!-- 💻 [본 페이지] 인증 플랫폼 메인 화면 (기본 스크롤 지원) -->
+        <!-- ======================================================= -->
+        
+        <!-- 상단 고정 헤더 -->
         <header class="bg-white border-b border-gray-100 px-5 pt-5 pb-3 shrink-0">
             <div class="flex justify-between items-center">
                 <div>
@@ -110,8 +122,10 @@
             </div>
         </header>
 
+        <!-- 메인 스크롤 콘텐츠 영역 -->
         <div class="flex-1 overflow-y-auto px-5 py-5 pb-36 space-y-6">
 
+            <!-- 웰컴 비주얼 카드 -->
             <div class="rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-600 p-6 text-white ios-shadow space-y-2 relative overflow-hidden">
                 <div class="absolute -right-6 -bottom-6 opacity-10 text-white text-7xl font-black">RE</div>
                 <h2 class="text-lg font-black tracking-tight leading-snug">
@@ -122,15 +136,267 @@
                 </p>
             </div>
 
+            <!-- 네비게이션 탭 -->
             <nav class="grid grid-cols-3 gap-1 bg-gray-100 rounded-2xl p-1 shadow-inner">
                 <button id="navWrite" class="nav bg-white text-gray-950 shadow-sm rounded-xl py-2.5 text-xs font-extrabold transition-all">루틴 기록</button>
                 <button id="navMine" class="nav text-gray-500 rounded-xl py-2.5 text-xs font-extrabold transition-all">내 기록실</button>
                 <button id="navFeed" class="nav text-gray-500 rounded-xl py-2.5 text-xs font-extrabold transition-all">공유 피드</button>
             </nav>
 
+            <!-- [TAB 1] 루틴 기록 화면 콘텐츠 -->
             <section id="viewWrite" class="space-y-6 function-view">
                 
+                <!-- 사진 업로드 -->
                 <div class="space-y-2.5">
                     <label class="block text-xs font-extrabold text-gray-400 uppercase tracking-wider">1. 사진 인증</label>
                     <input type="file" id="imageUpload" accept="image/*" class="hidden">
-                    <button type="button" id="uploadZone" class="w-full aspect-video bg-gray-50 border-2 border-dashed border-gray-200 rounded-[24px] flex items-center justify-
+                    <button type="button" id="uploadZone" class="w-full aspect-video bg-gray-50 border-2 border-dashed border-gray-200 rounded-[24px] flex items-center justify-center relative overflow-hidden ios-shadow hover:border-emerald-400 transition group">
+                        <div id="uploadPrompt" class="flex flex-col items-center px-6 text-center">
+                            <div class="w-11 h-11 rounded-xl bg-white border border-gray-100 flex items-center justify-center text-xl ios-shadow">📷</div>
+                            <p class="text-xs font-bold text-gray-700 mt-2.5">사진 촬영 또는 파일 올리기</p>
+                        </div>
+                        <img id="imagePreview" class="hidden absolute inset-0 w-full h-full object-cover" alt="인증 이미지">
+                        <span id="replaceHint" class="hidden absolute bottom-3 right-3 bg-black/60 text-white text-[10px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm">사진 바꾸기</span>
+                    </button>
+                </div>
+
+                <!-- 기분 기록 -->
+                <div class="space-y-2.5">
+                    <label class="block text-xs font-extrabold text-gray-400 uppercase tracking-wider">2. 지금 기분을 한줄로 남겨주시겠어요? <span class="text-gray-300 font-semibold">(선택)</span></label>
+                    <textarea id="userText" maxlength="120" rows="3" class="w-full rounded-[24px] border border-gray-200 bg-gray-50/50 p-4 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 resize-none ios-shadow transition-all placeholder:text-gray-400" placeholder="이번 인증은 어떤 기분인가요? 마음 상태를 편안하게 적어주세요."></textarea>
+                    <div class="flex justify-between text-[11px] text-gray-400 px-1">
+                        <span>사진만 올려도 기록이 가능합니다.</span>
+                        <span id="charCount">0/120</span>
+                    </div>
+                </div>
+
+                <!-- 마음 상태 선택 -->
+                <div class="space-y-2.5">
+                    <label class="block text-xs font-extrabold text-gray-400 uppercase tracking-wider">3. 나의 마음 상태 <span class="text-gray-300 font-semibold">(선택)</span></label>
+                    <div id="moodGroup" class="grid grid-cols-2 gap-2">
+                        <button type="button" data-mood="편안해요" class="mood rounded-xl border border-gray-100 bg-white py-3 text-xs font-bold text-gray-600 ios-shadow transition-all">☀️ 편안해요</button>
+                        <button type="button" data-mood="활기차요" class="mood rounded-xl border border-gray-100 bg-white py-3 text-xs font-bold text-gray-600 ios-shadow transition-all">⚡ 활기차요</button>
+                        <button type="button" data-mood="기분 전환 필요" class="mood rounded-xl border border-gray-100 bg-white py-3 text-xs font-bold text-gray-600 ios-shadow transition-all">🌿 기분 전환 필요</button>
+                        <button type="button" data-mood="당 충전 필요" class="mood rounded-xl border border-gray-100 bg-white py-3 text-xs font-bold text-gray-600 ios-shadow transition-all">🍫 당 충전 필요</button>
+                    </div>
+                </div>
+
+                <!-- 공개 범위 설정 -->
+                <div class="space-y-2.5">
+                    <label class="block text-xs font-extrabold text-gray-400 uppercase tracking-wider">4. 공개 범위 설정</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button type="button" id="privacyPrivate" class="rounded-2xl border-2 border-emerald-500 bg-emerald-50 p-4 text-left transition-all">
+                            <p class="text-xs font-extrabold text-emerald-800">🔒 나만 보기</p>
+                            <p class="text-[10px] text-emerald-700/70 mt-1">개인 기록실에만 조용히 보관</p>
+                        </button>
+                        <button type="button" id="privacyPublic" class="rounded-2xl border border-gray-100 bg-white p-4 text-left transition-all ios-shadow">
+                            <p class="text-xs font-extrabold text-gray-800">🌱 피드에 공유하기</p>
+                            <p class="text-[10px] text-gray-400 mt-1">동료들과 익명으로 함께 공유</p>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- AI 코멘트 창 -->
+                <div id="resultComment" class="hidden bg-gradient-to-br from-emerald-500 to-teal-600 rounded-[24px] p-5 text-white ios-shadow">
+                    <div class="flex items-center justify-between">
+                        <span class="bg-white/20 text-[9px] font-extrabold tracking-wider uppercase px-2 py-0.5 rounded-full">RECOVA AI 코멘트</span>
+                    </div>
+                    <p id="resultText" class="text-xs font-bold leading-relaxed mt-2.5 text-emerald-50"></p>
+                </div>
+            </section>
+
+            <!-- [TAB 2] 내 기록실 화면 -->
+            <section id="viewMine" class="hidden space-y-5 function-view">
+                <div class="grid grid-cols-3 gap-2">
+                    <div class="rounded-2xl bg-gray-50 border border-gray-100/70 p-3.5 text-center">
+                        <p id="statTotal" class="text-lg font-extrabold text-gray-950">0</p>
+                        <p class="text-[10px] text-gray-400 font-bold mt-0.5">총 기록 회수</p>
+                    </div>
+                    <div class="rounded-2xl bg-gray-50 border border-gray-100/70 p-3.5 text-center">
+                        <p id="statStreak" class="text-lg font-extrabold text-gray-950">0</p>
+                        <p class="text-[10px] text-gray-400 font-bold mt-0.5">현재 연속일</p>
+                    </div>
+                    <div class="rounded-2xl bg-gray-50 border border-gray-100/70 p-3.5 text-center">
+                        <p id="statWeek" class="text-lg font-extrabold text-gray-950">0</p>
+                        <p class="text-[10px] text-gray-400 font-bold mt-0.5">이번주 누적</p>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center pt-2">
+                    <h2 class="text-xs font-extrabold text-gray-400 uppercase tracking-wider">📝 나의 지난 히스토리</h2>
+                    <button id="clearAllBtn" class="text-[11px] text-gray-400 font-bold hover:text-red-500 transition-colors">데이터 초기화</button>
+                </div>
+                <div id="myRecords" class="space-y-3.5"></div>
+            </section>
+
+            <!-- [TAB 3] 공유 피드 화면 -->
+            <section id="viewFeed" class="hidden space-y-4 function-view">
+                <div class="rounded-2xl bg-gray-50 border border-gray-100 p-4">
+                    <p class="text-xs leading-relaxed text-gray-500">🌱 다른 러너들과 익명으로 함께 나누는 공간입니다. 서로를 향한 따뜻한 응원을 전해 보세요.</p>
+                </div>
+                <div id="publicFeed" class="space-y-3.5"></div>
+            </section>
+        </div>
+
+        <!-- 하단 바 고정 -->
+        <footer id="footerWrite" class="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur border-t border-gray-100 px-5 py-4 z-30">
+            <button id="submitBtn" class="w-full rounded-2xl bg-gray-950 text-white py-4 text-sm font-extrabold shadow-md hover:bg-emerald-600 active:scale-[.98] transition-all">오늘의 루틴 완료하기</button>
+            <p class="text-[10px] text-center text-gray-400 mt-2.5 font-medium">© 2026 RECOVA. All rights reserved.</p>
+        </footer>
+    </div>
+
+<script>
+const KEY="recova_mvp_v15_records";
+const $=id=>document.getElementById(id);
+const getRecords=()=>JSON.parse(localStorage.getItem(KEY)||"[]");
+
+const funnyNicknames = ["**헬스보이**", "**프로틴인간**", "**웃음과텐션**", "**근수저꿈나무**", "**오운완요정**", "**벌크업마스터**", "**에너지폭발**"];
+const existingDatabaseNicknames = ["**헬스보이1**", "**프로틴인간1**", "**프로틴인간2**", "**웃음과텐션1**"];
+
+let selectedImage="",selectedMood="",visibility="private",editId=null;
+let globalNickname = "익명의 러너";
+let isNicknameChecked = false;
+
+const setRecords=r=>{localStorage.setItem(KEY,JSON.stringify(r));refreshStats();};
+
+// 풀스크린 인터랙션 연동 제어
+$("step-login").addEventListener('click', () => {
+    $("fullscreen-login").classList.add("hidden");
+    $("fullscreen-nickname").classList.remove("hidden");
+    
+    const randomBase = funnyNicknames[Math.floor(Math.random() * funnyNicknames.length)].replaceAll("**", "");
+    $("userNickname").value = randomBase + "1";
+});
+
+$("checkDuplicateBtn").addEventListener('click', () => {
+    let inputName = $("userNickname").value.trim();
+    if(!inputName) return alert("닉네임을 입력해 주세요.");
+
+    let currentNumber = 1;
+    let baseName = inputName.replace(/[0-9]/g, ""); 
+    let checkName = inputName;
+
+    while(existingDatabaseNicknames.map(n => n.replaceAll("**", "")).includes(checkName) || getRecords().some(r => r.nickname === checkName)) {
+        currentNumber++;
+        checkName = baseName + currentNumber;
+    }
+
+    if (checkName !== inputName) {
+        $("userNickname").value = checkName;
+        $("duplicateStatus").innerText = `⚠️ 중복이 있어 [${checkName}]번으로 자동 조정되었습니다!`;
+        $("duplicateStatus").className = "text-[10px] font-bold px-1 text-amber-600";
+    } else {
+        $("duplicateStatus").innerText = `✅ 사용 가능한 고유 닉네임입니다.`;
+        $("duplicateStatus").className = "text-[10px] font-bold px-1 text-emerald-600";
+    }
+
+    isNicknameChecked = true;
+    $("saveNicknameBtn").disabled = false;
+    $("saveNicknameBtn").className = "w-full bg-emerald-600 text-white text-sm font-extrabold py-3.5 rounded-xl hover:bg-emerald-700 active:scale-95 transition-all shadow-md cursor-pointer";
+});
+
+$("userNickname").addEventListener('input', () => {
+    isNicknameChecked = false;
+    $("saveNicknameBtn").disabled = true;
+    $("saveNicknameBtn").className = "w-full bg-gray-300 text-gray-500 text-xs font-extrabold py-3.5 rounded-xl transition-all shadow-sm cursor-not-allowed";
+    $("duplicateStatus").innerText = "⚠️ 변경됨: 다시 중복 확인을 눌러주세요.";
+    $("duplicateStatus").className = "text-[10px] font-bold px-1 text-red-500";
+});
+
+$("saveNicknameBtn").addEventListener('click', () => {
+    if(!isNicknameChecked) return;
+    globalNickname = $("userNickname").value.trim();
+    $("headerNickname").innerText = globalNickname;
+    $("fullscreen-nickname").classList.add("hidden");
+    $("fullscreen-philosophy").classList.remove("hidden");
+});
+
+$("closePhilosophyBtn").addEventListener('click', () => {
+    $("onboarding-gate").classList.add("translate-y-[-100%]");
+    setTimeout(() => {
+        $("onboarding-gate").classList.add("hidden");
+    }, 500);
+});
+
+function go(view){
+ document.querySelectorAll(".function-view").forEach(v=>v.classList.add("hidden"));
+ $("view"+view[0].toUpperCase()+view.slice(1)).classList.remove("hidden");
+ $("footerWrite").classList.toggle("hidden",view!=="write");
+ document.querySelectorAll(".nav").forEach(b=>b.className="nav text-gray-500 rounded-xl py-2.5 text-xs font-extrabold transition-all");
+ $("nav"+view[0].toUpperCase()+view.slice(1)).className="nav bg-white text-gray-950 shadow-sm rounded-xl py-2.5 text-xs font-extrabold transition-all";
+ if(view==="mine") renderMine();
+ if(view==="feed") renderFeed();
+}
+$("navWrite").onclick=()=>go("write"); $("navMine").onclick=()=>go("mine"); $("navFeed").onclick=()=>go("feed");
+
+$("uploadZone").onclick=()=>$("imageUpload").click();
+imageUpload.onchange=e=>{
+ const f=e.target.files[0]; if(!f)return;
+ if(!f.type.startsWith("image/"))return alert("이미지 파일만 업로드할 수 있습니다.");
+ const r=new FileReader();
+ r.onload=ev=>{selectedImage=ev.target.result;$("imagePreview").src=ev.target.result;$("imagePreview").classList.remove("hidden");$("uploadPrompt").classList.add("hidden");$("replaceHint").classList.remove("hidden");};
+ r.readAsDataURL(f);
+};
+$("userText").oninput=()=>$("charCount").textContent=`${$("userText").value.length}/120`;
+
+document.querySelectorAll(".mood").forEach(btn=>btn.onclick=()=>{
+ selectedMood=btn.dataset.mood;
+ document.querySelectorAll(".mood").forEach(b=>b.className="mood rounded-xl border border-gray-100 bg-white py-3 text-xs font-bold text-gray-600 ios-shadow transition-all");
+ btn.className="mood rounded-xl border-2 border-emerald-500 bg-emerald-50 py-3 text-xs font-extrabold text-emerald-700 transition-all";
+});
+
+$("privacyPrivate").onclick=()=>setPrivacy("private"); $("privacyPublic").onclick=()=>setPrivacy("public");
+function setPrivacy(t){
+ visibility=t;
+ $("privacyPrivate").className=t==="private"?"rounded-2xl border-2 border-emerald-500 bg-emerald-50 p-4 text-left transition-all":"rounded-2xl border border-gray-100 bg-white p-4 text-left transition-all ios-shadow";
+ $("privacyPublic").className=t==="public"?"rounded-2xl border-2 border-emerald-500 bg-emerald-50 p-4 text-left transition-all":"rounded-2xl border border-gray-100 bg-white p-4 text-left transition-all ios-shadow";
+}
+
+$("submitBtn").onclick=()=>{
+ const text=$("userText").value.trim();
+ const nickname=$("userNickname").value.trim() || globalNickname;
+ if(!selectedImage&&text==="")return alert("사진 또는 기분 기록 중 하나는 남겨주세요.");
+ const records=getRecords();
+ const uId = "demo-user-003";
+ const count=editId?(records.find(r=>r.id===editId)?.checkinCount||1):records.filter(r=>r.userId===uId).length+1;
+ 
+ const comment=makeComment(text,selectedMood,!!selectedImage,count);
+ 
+ if(editId){const i=records.findIndex(r=>r.id===editId); records[i]={...records[i],nickname:nickname,image:selectedImage,text,mood:selectedMood,visibility,comment,updatedAt:new Date().toISOString()};}
+ else records.unshift({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),userId:uId,nickname:nickname,checkinCount:count,image:selectedImage,text,mood:selectedMood,visibility,comment,createdAt:new Date().toISOString()});
+ 
+ setRecords(records); 
+ $("resultText").textContent=comment; 
+ $("resultComment").classList.remove("hidden"); 
+ alert(editId?"기록이 수정되었습니다.":"오늘의 루틴이 기록되었습니다."); 
+ resetForm(); 
+ go("mine");
+};
+
+function makeComment(text,mood,hasImage,count){
+ if(!text&&hasImage)return `“${count}번째 기록이네요. 어떤 순간이든 나를 위해 흔적을 남겨둔 것만으로도 충분히 의미 있습니다.”`;
+ if(mood==="기분 전환 필요")return `“${count}번째 기록이네요. 지금의 리프레시 선택이 오늘 하루의 무거웠던 공기를 산뜻하게 바꾸어 줄 거예요.”`;
+ if(mood==="당 충전 필요")return `“${count}번째 기록이네요. 리코바의 달콤한 에너지 배합과 함께, 당신의 마음 지수도 100% 충전되기를 응원합니다.”`;
+ const positive=["행복","사랑","좋","든든","감사","기쁨","응원"].some(w=>text.includes(w));
+ return positive?`“${count}번째 기록이네요. 문장 가득 묻어나는 긍정적인 에너지가 주변까지 환하게 밝혀주는 것 같습니다.”`:`“${count}번째 기록이네요. 기분을 마주하고 기록해 낸 오늘의 선택이 나를 아끼는 시작입니다.”`;
+}
+
+function renderMine(){const uId = "demo-user-003"; const mine=getRecords().filter(r=>r.userId===uId);$("myRecords").innerHTML=mine.length?mine.map(cardMine).join(""):empty("아직 기록실이 비어있습니다.");bindButtons();refreshStats();}
+function renderFeed(){const pub=getRecords().filter(r=>r.visibility==="public");$("publicFeed").innerHTML=pub.length?pub.map(cardFeed).join(""):empty("아직 공유된 루틴 피드가 없습니다.");}
+
+function cardMine(r){return `<article class="bg-white border border-gray-100 rounded-3xl p-4 ios-shadow space-y-3"><div class="flex justify-between items-center text-xs"><span class="font-extrabold text-gray-800">${r.visibility==="public"?"🌱 공유됨":"🔒 나만보기"} · ${r.checkinCount}회차</span><span class="text-gray-400">${fmt(r.createdAt)}</span></div>${r.image?`<img src="${r.image}" class="w-full aspect-video object-cover rounded-2xl border border-gray-100">`:""}${r.mood?`<p class="text-[10px] text-emerald-600 font-extrabold bg-emerald-50 inline-block px-2 py-0.5 rounded-md">마음 상태: ${esc(r.mood)}</p>`:""}${r.text?`<p class="text-xs text-gray-700 leading-relaxed font-medium">“${esc(r.text)}”</p>`:""}<p class="text-xs text-emerald-800 bg-gray-50 rounded-2xl px-3 py-2.5 border border-gray-100/60 leading-relaxed">${esc(r.comment)}</p><div class="flex gap-3 text-[11px] font-extrabold pt-1"><button data-edit="${r.id}" class="text-emerald-600">수정</button><button data-delete="${r.id}" class="text-gray-300 hover:text-red-500">삭제</button></div></article>`;}
+function cardFeed(r){return `<article class="bg-white border border-gray-100 rounded-3xl p-4 ios-shadow space-y-3 fade-in"><div class="flex justify-between items-center text-xs"><span class="font-extrabold text-gray-800">🌱 ${esc(r.nickname)}</span><span class="text-gray-400">${fmt(r.createdAt)}</span></div>${r.image?`<img src="${r.image}" class="w-full aspect-video object-cover rounded-2xl border border-gray-100">`:""}${r.text?`<p class="text-xs text-gray-600 leading-relaxed">“${esc(r.text)}”</p>`:""}<p class="text-xs text-emerald-700 bg-emerald-50 rounded-2xl px-3 py-2.5 leading-relaxed">${esc(r.comment)}</p><div class="flex gap-3 pt-1"><button onclick="alert('따뜻한 응원이 전송되었습니다.')" class="bg-gray-50 border border-gray-100 text-gray-600 rounded-xl px-3 py-1.5 text-[11px] font-bold hover:bg-emerald-50 hover:text-emerald-700 transition-all">🌱 따뜻한 응원 보내기</button></div></article>`;}
+
+function bindButtons(){document.querySelectorAll("[data-edit]").forEach(b=>b.onclick=()=>editRecord(b.dataset.edit));document.querySelectorAll("[data-delete]").forEach(b=>b.onclick=()=>deleteRecord(b.dataset.delete));}
+function editRecord(id){const r=getRecords().find(x=>x.id===id);if(!r)return;editId=id;selectedImage=r.image||"";selectedMood=r.mood||"";visibility=r.visibility||"private";$("userText").value=r.text||"";$("charCount").textContent=`${$("userText").value.length}/120`;if(selectedImage){$("imagePreview").src=selectedImage;$("imagePreview").classList.remove("hidden");$("uploadPrompt").classList.add("hidden");$("replaceHint").classList.remove("hidden")}else{$("imagePreview").classList.add("hidden");$("uploadPrompt").classList.remove("hidden");$("replaceHint").classList.add("hidden");}document.querySelectorAll(".mood").forEach(b=>{if(b.dataset.mood===selectedMood)b.click();});setPrivacy(visibility);$("submitBtn").textContent="기록 수정 완료하기";go("write");}
+function deleteRecord(id){if(!confirm("이 루틴 기록을 삭제할까요?"))return;setRecords(getRecords().filter(r=>r.id!==id));renderMine();renderFeed();}
+$("clearAllBtn").onclick=()=>{if(!confirm("기기에 기록된 모든 RECOVA 히스토리를 삭제할까요?"))return;localStorage.removeItem(KEY);renderMine();renderFeed();refreshStats();};
+
+function resetForm(){editId=null;selectedImage="";selectedMood="";visibility="private";$("userText").value="";$("charCount").textContent="0/120";$("imageUpload").value="";$("imagePreview").src="";$("imagePreview").classList.add("hidden");$("uploadPrompt").classList.remove("hidden");$("replaceHint").classList.add("hidden");$("resultComment").classList.add("hidden");$("submitBtn").textContent="오늘의 루틴 완료하기";document.querySelectorAll(".mood").forEach(b=>b.className="mood rounded-xl border border-gray-100 bg-white py-3 text-xs font-bold text-gray-600 ios-shadow transition-all");setPrivacy("private");}
+function refreshStats(){const uId = "demo-user-003"; const mine=getRecords().filter(r=>r.userId===uId);const total=mine.length;const week=mine.filter(r=>(new Date()-new Date(r.createdAt))<=7*24*60*60*1000).length;$("streakBadge").textContent=`✨ ${total}회차`;$("statTotal").textContent=total;$("statStreak").textContent=total;$("statWeek").textContent=week;}
+function empty(t){return `<div class="rounded-2xl bg-gray-50 border border-gray-100 p-6 text-center text-xs text-gray-400 font-bold">${t}</div>`;}
+function fmt(iso){return new Date(iso).toLocaleString("ko-KR",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"});}
+function esc(s){return String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");}
+refreshStats();
+</script>
+</body>
+</html>
