@@ -8,6 +8,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght=400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
     html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; font-family: 'Pretendard', system-ui, sans-serif; background-color: #F8FAFC; }
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // RECOVA 전용 실제 데이터 창고 주소와 키 설정
+  const SUPABASE_URL = "https://bbylfurnliwdpobsztal.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_g0qCbROT0uDsa_RJSXXmdA_2EAflLsq";
+  
+  // Supabase 실행하기
+  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+</script>
     .ios-shadow { box-shadow: 0 12px 40px rgba(16, 185, 129, 0.08); }
     .fade-in { animation: fadeIn 0.35s ease-out forwards; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
