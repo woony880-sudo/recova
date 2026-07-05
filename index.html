@@ -446,7 +446,7 @@ $("saveNicknameBtn").onclick = async function() {
     globalNickname = $("userNickname").value.trim();
     $("headerNickname").innerText = globalNickname;
     localStorage.setItem("recova_nickname", globalNickname);
-    await ensureProfile();
+
     $("fullscreen-nickname").classList.add("hidden");
     $("fullscreen-philosophy").classList.remove("hidden");
 };
@@ -517,7 +517,7 @@ $("submitBtn").onclick = async () => {
 
         globalNickname = nickname;
         localStorage.setItem("recova_nickname", nickname);
-        await ensureProfile();
+
 
         const mine = getRecords().filter(r => r.userId === CURRENT_USER_ID);
         const count = editId ? (mine.find(r => r.id === editId)?.checkinCount || mine.length || 1) : mine.length + 1;
