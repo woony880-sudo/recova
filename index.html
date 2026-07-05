@@ -325,21 +325,6 @@ function normalizeRecord(row, index = 0, total = 0) {
     };
 }
 
-async function ensureProfile() {
-    const nickname = globalNickname || $("userNickname")?.value?.trim() || "익명의 러너";
-    try {
-        await supabaseRequest("/rest/v1/profiles", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Prefer": "resolution=merge-duplicates,return=minimal"
-            },
-            body: JSON.stringify({ id: CURRENT_USER_ID, nickname })
-        });
-    } catch (e) {
-        console.warn("profiles 저장은 건너뜁니다:", e.message);
-    }
-}
 
 async function fetchRecords() {
     const rows = await supabaseRequest("/rest/v1/checkins?select=*&order=created_at.desc", {
